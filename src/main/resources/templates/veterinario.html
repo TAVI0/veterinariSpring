@@ -10,7 +10,9 @@
 
 <a th:href="@{/productoVentas}">Vender productos</a>
 <br>
-<a th:object="${loginVO}" th:href="@{/viewdiasTrabajo/{id}(id=${userBD.id})}">Seleccionar dias</a>
+<a th:href="@{/viewdiasTrabajo/{id}(id=${userBD.id})}">Dias de trabajo</a>
+<br>
+<a th:href="@{/viewEspecialidad/{id}(id=${userBD.id})}">Especialidad</a>
 <br>
 
 </body>

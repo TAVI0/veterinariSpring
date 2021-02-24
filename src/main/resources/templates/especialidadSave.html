@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <link href="../static/css/bootstrapp.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<h1>Vista de dias</h1>
+<div class="container">
+
+    <form action="#" th:action="@{/especialitySave{id}(id=${userBD})}" class="form-goup" th:object="${especiality}" method="post">
+
+        <input type="hidden" th:field="*{id}" name="id" id="id">
+        <input type="hidden" th:field="*{idVet}" name="idVet" id="idVet" th:value="${userBD}">
+
+        <div class="form-group">
+
+            <label >Tipo:</label>
+            <select name="type" th:field="*{especialidad}">
+                <option value="gato" id="gato" >gato</option>
+                <option value="perro" id="perro">perro</option>
+                <option value="tortuga" id="tortuga">tortuga</option>
+                <option value="canario" id="canario">canario</option>
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+
+    </form>
+
+
+</div>
+
+</body>
+</html>

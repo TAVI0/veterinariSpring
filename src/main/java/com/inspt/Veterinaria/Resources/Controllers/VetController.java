@@ -1,10 +1,12 @@
 package com.inspt.Veterinaria.Resources.Controllers;
 
+import com.inspt.Veterinaria.Entity.Especiality;
 import com.inspt.Veterinaria.Entity.Producto;
 import com.inspt.Veterinaria.Entity.User;
 import com.inspt.Veterinaria.Entity.VetDays;
 import com.inspt.Veterinaria.Resources.VO.LoginVO;
 import com.inspt.Veterinaria.Resources.VO.VentaVO;
+import com.inspt.Veterinaria.Service.EspecialityService;
 import com.inspt.Veterinaria.Service.ProductoService;
 import com.inspt.Veterinaria.Service.UserService;
 import com.inspt.Veterinaria.Service.VeterinarioService;
@@ -23,12 +25,12 @@ public class VetController {
 
     private final ProductoService productoService;
     private final VeterinarioService veterinarioService;
-    private final UserService userService;
+    private final EspecialityService especialityService;
 
-    public VetController(VeterinarioService veterinarioService, ProductoService productoService, UserService userService) {
+    public VetController(VeterinarioService veterinarioService, ProductoService productoService, EspecialityService especialityService) {
         this.veterinarioService = veterinarioService;
         this.productoService = productoService;
-        this.userService = userService;
+        this.especialityService = especialityService;
     }
 
 // lista de productos para la venta
@@ -85,6 +87,34 @@ public class VetController {
         veterinarioService.save(vetDays);
         model.addAttribute("userBD", vetDays.getId());
         return "workDays";
+    }
+
+    ////////////////////////////////
+    //ver especialidad
+    @GetMapping("/viewEspecialidad/{id}")
+    public String especialidad(Model model,@PathVariable("id")int id){
+        model.addAttribute("list", especialityService.findByIdVet(id));
+        model.addAttribute("userBD", id);
+        return "especialidadLista";
+    }
+    //formulario para agregar especialidad
+    @GetMapping("/addEspecialidad/{id}")
+    public String agregarEspecialidad(Model model,@PathVariable("id")int id){
+        model.addAttribute("especiality",new Especiality());
+        model.addAttribute("userBD",id);
+        return "especialidadSave";
+    }
+
+    @PostMapping("/especialitySave{id}")
+    public String guardarEspecialidad(Model model, Especiality especiality, @PathVariable("id")int id) {
+        especiality.setIdVet(id);
+
+
+
+        especialityService.save(especiality);
+        model.addAttribute("userBD", especiality.getIdVet());
+        model.addAttribute("list",especialityService.findByIdVet(id));
+        return "especialidadLista";
     }
 
 
