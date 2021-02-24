@@ -21,20 +21,24 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute(name = "loginVO") LoginVO loginVO , Model model){
-        String user = loginVO.getUser();
+        String user = loginVO.getUserName();
         String password = loginVO.getPassword();
 
         Optional<User> possibleUser = userService.findByUserName(user);
         if(possibleUser.isPresent()){
             User userBD = possibleUser.get();
+
             if(userBD.getPassword().equals(password)){
                 String type = userBD.getType();
                 switch (type){
                     case "adm":
                         return "admin";
                     case "vet":
+                        model.addAttribute("userBD",userBD);
                         return "veterinario";
                     case "rec":
+
+
                         return "recepcionista";
                 }
             }else{

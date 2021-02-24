@@ -1,12 +1,11 @@
 package com.inspt.Veterinaria.Resources.Controllers;
 
 import com.inspt.Veterinaria.Entity.Producto;
+import com.inspt.Veterinaria.Resources.VO.VentaVO;
 import com.inspt.Veterinaria.Service.ProductoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -41,6 +40,7 @@ public class ProductosController {
         model.addAttribute("list", productoService.findAll());
         return "productosLista";
     }
+
     @GetMapping("/deleteProducto/{id}")
     public String deleteProducto(@PathVariable int id, Model model){
         productoService.deleteById(id);
@@ -50,17 +50,9 @@ public class ProductosController {
     }
 
 //////////////////
-//reveer esto al final
-@GetMapping("/productoVenta/{id}")
-public String venderProducto(@PathVariable("id")int id, Model model){
-    Producto prod = productoService.findById(id).get();
-    int sell = (int)model.getAttribute("stockVenta");
-    int newStock = prod.getStock() - sell;
-    prod.setStock(newStock);
-    productoService.save(prod);
 
-    model.addAttribute("list", productoService.findByRegular(true));
-    return "productosListaVenta";
-}
+
+
+
 
 }

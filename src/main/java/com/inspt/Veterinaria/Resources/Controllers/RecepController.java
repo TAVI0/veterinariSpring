@@ -2,18 +2,16 @@ package com.inspt.Veterinaria.Resources.Controllers;
 
 import com.inspt.Veterinaria.Entity.Animal;
 import com.inspt.Veterinaria.Entity.Producto;
-import com.inspt.Veterinaria.Entity.User;
-import com.inspt.Veterinaria.Repository.AnimalRepository;
+import com.inspt.Veterinaria.Resources.VO.VentaVO;
 import com.inspt.Veterinaria.Service.AnimalService;
 import com.inspt.Veterinaria.Service.ProductoService;
-import com.inspt.Veterinaria.Service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Optional;
 
 
 @Controller
@@ -29,6 +27,24 @@ public class RecepController {
 // Lista de ventas de productos
     @GetMapping("/productoRegular")
     public String getProductoPages(Model model){
+        model.addAttribute("list", productoService.findByRegular(true));
+        model.addAttribute("ventaVO", new VentaVO());
+        return "productosListaVenta";
+    }
+
+    @GetMapping("/productoVenta/{id}")
+    public String venderProducto(@PathVariable("id")int id, @ModelAttribute("ventaVO") VentaVO ventaVO, Model model){
+        Producto prod = productoService.findById(id).get();
+        int sell = ventaVO.getVenta();
+        int newStock = prod.getStock() - sell;
+
+        System.out.println("sell " + sell);
+        System.out.println("stock " + newStock);
+
+        prod.setStock(newStock);
+        productoService.save(prod);
+
+
         model.addAttribute("list", productoService.findByRegular(true));
         return "productosListaVenta";
     }

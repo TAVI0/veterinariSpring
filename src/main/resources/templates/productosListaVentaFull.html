@@ -18,7 +18,7 @@
     <th>regular</th>
     <th>stock</th>
     <th></th>
-    <th></th>
+
     </thead>
     <tbody>
     <tr th:each="producto : ${list}">
@@ -30,10 +30,12 @@
         <td th:text="${producto.stock}">
 
         <td>
-        <form action="#" th:action="@{/productoVenta/{id}(id=${producto.id})}" th:object="${ventaVO}" method="get">
-        <input type="number" th:field="*{venta}" min="0" th:max="${producto.stock}" value="0" />
-        <input class="btn btn-danger" type="submit" value="vender">
-    </form></td>
+        <form action="#" th:action="@{/productoVentaFull/{id}(id=${producto.id})}" th:object="${ventaVO}" method="get">
+            <input type="number" th:field="*{venta}" min="0" th:max="${producto.stock}" value="0"/>
+            <input class="btn btn-danger" type="submit" value="vender" />
+        </form>
+        </td>
+
 
     </tr>
     </tbody>

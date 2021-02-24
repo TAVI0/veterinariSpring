@@ -6,57 +6,65 @@
     <link href="../static/css/bootstrapp.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
 </head>
 <body>
-<h1>ABMC PRODUCTOS</h1>
+<h1>Seleccionar dias</h1>
 <div class="container">
-    <form action="#" th:action="@{/userSave}" class="form-goup" th:object="${user}" method="post">
+    <form action="#" th:action="@{/workDaysSave}" class="form-goup" th:object="${vetDays}" method="post">
 
         <input type="hidden" th:field="*{id}" name="id" id="id">
+<!--
+        <label>ID: <span th:text="${vetDays.day1}"></span></label>
+-->
         <div class="form-group">
 
-            <label for="userName">Usuario:</label>
-            <input type="text" class="form-control" id="userName" th:field="*{userName}" name="userName">
-
-        </div>
-
-        <div class="form-group">
-
-            <label for="password">Password:</label>
-            <input type="text"	class="form-control" id="password" th:field="*{password}" name="password">
-
-        </div>
-
-        <div class="form-group">
-
-            <label >Tipo:</label>
+            <label >Dia 1:</label>
             <br>
-            <select name="type">
-                <option value="adm" id="adm" >Administrador</option>
-                <option value="vet" id="vet">Veterinario</option>
-                <option value="rec" id="rec">Recepcionista</option>
+            <select name="day1" th:field="*{day1}">
+                <option value="lunes" >lunes</option>
+                <option value="martes" >martes</option>
+                <option value="miercoles" >miercoles</option>
+                <option value="jueves" >jueves</option>
+                <option value="viernes" >viernes</option>
+                <option value="sabado" >sabado</option>
             </select>
             <br>
         </div>
 
         <div class="form-group">
 
-            <label for="firstName">Nombre:</label>
-            <input type="text"	class="form-control" id="firstName" th:field="*{firstName}" name="firstName">
-
+            <label >Dia 2:</label>
+            <br>
+            <select name="day2"  th:field="*{day2}">
+                <option value="lunes" >lunes</option>
+                <option value="martes" >martes</option>
+                <option value="miercoles" >miercoles</option>
+                <option value="jueves" >jueves</option>
+                <option value="viernes" >viernes</option>
+                <option value="sabado" >sabado</option>
+            </select>
+            <br>
         </div>
 
         <div class="form-group">
 
-            <label for="lastName">Apellido:</label>
-            <input type="text"	class="form-control" id="lastName" th:field="*{lastName}" name="lastName">
-
+            <label >Dia 3:</label>
+            <br>
+            <select name="day3"  th:field="*{day3}">
+                <option value="lunes" >lunes</option>
+                <option value="martes" >martes</option>
+                <option value="miercoles" >miercoles</option>
+                <option value="jueves" >jueves</option>
+                <option value="viernes" >viernes</option>
+                <option value="sabado" >sabado</option>
+            </select>
+            <br>
         </div>
 
         <button type="submit" class="btn btn-success">Guardar</button>
 
     </form>
-
+<!--
     <a href="/listaUsers" class="btn btn-primary">Atras</a>
-
+-->
 </div>
 
 </body>

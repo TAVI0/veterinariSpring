@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <link href="../static/css/bootstrapp.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<h1>Vista de dias</h1>
+<div class="container">
+        <!--<input type="hidden" th:field="*{id}" name="id" id="id">
+-->
+
+        <div class="form-group">
+            <label >Dia 1:<span th:text="${vetDays.day1}"></span></label>
+        </div>
+
+        <div class="form-group">
+            <label >Dia 2:<span th:text="${vetDays.day2}"></span></label>
+        </div>
+
+        <div class="form-group">
+            <label >Dia 3:<span th:text="${vetDays.day3}"></span></label>
+        </div>
+
+    <a th:href="@{/workDaysSave/{id}(id=${userBD})}" class="btn btn-primary">Modificar</a>
+    <a class="btn btn-primary">Atras</a>
+
+</div>
+
+</body>
+</html>
