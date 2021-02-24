@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Producto</title>
+    <link href="../static/css/bootstrapp.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<h1>ABMC ANIMALES</h1>
+<div class="container">
+
+    <a href="/animalSave/0" class="btn btn-primary">Agregar</a>
+
+<table class="table">
+    <thead>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Tipo</th>
+    <th>Nombre dueño</th>
+    <th>Contacto dueño</th>
+    <th></th>
+    <th></th>
+    </thead>
+    <tbody>
+    <tr th:each="animal : ${list}">
+
+        <td th:text="${animal.id}">
+        <td th:text="${animal.name}">
+        <td th:text="${animal.type}">
+        <td th:text="${animal.ownerName}">
+        <td th:text="${animal.contactOwner}">
+        <td><a class="btn btn-info" th:href="@{/animalSave/{id}(id=${animal.id})}">Editar</a></td>
+        <td><a class="btn btn-danger" th:href="@{deleteAnimal/{id}(id=${animal.id})}">Eliminar</a></td>
+    </tr>
+    </tbody>
+</table>
+<!--
+    <a href="/listaProductos" class="btn btn-primary">Atras</a>
+-->
+</div>
+
+</body>
+</html>

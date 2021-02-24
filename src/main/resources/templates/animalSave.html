@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <link href="../static/css/bootstrapp.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<h1>AGREGAR ANIMAL</h1>
+<div class="container">
+    <form action="#" th:action="@{/animalSave}" class="form-goup" th:object="${animal}" method="post">
+
+        <input type="hidden" th:field="*{id}" name="id" id="id">
+        <div class="form-group">
+
+            <label for="name">Nombre:</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" name="name">
+
+        </div>
+
+        <div class="form-group">
+
+            <label >Tipo:</label>
+            <br>
+            <select name="type" th:field="*{type}">
+                <option value="gato" id="gato" >gato</option>
+                <option value="perro" id="perro">perro</option>
+                <option value="tortuga" id="tortuga">tortuga</option>
+                <option value="canario" id="canario">canario</option>
+            </select>
+            <br>
+        </div>
+
+        <div class="form-group">
+
+            <label for="ownerName">Nombre dueño:</label>
+            <input type="text"	class="form-control" id="ownerName" th:field="*{ownerName}" name="ownerName">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="contactOwner">Contacto dueño:</label>
+            <input type="text"	class="form-control" id="contactOwner" th:field="*{contactOwner}" name="contactOwner">
+
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+
+    </form>
+
+    <a href="/listaAnimal" class="btn btn-primary">Atras</a>
+
+</div>
+
+</body>
+</html>

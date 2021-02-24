@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface ProductoRepository extends CrudRepository<Producto, Integer> {
     Optional<Producto> findById(int id);
     List<Producto> findAll();
+    List<Producto> findByRegular(boolean regular);
     Producto save(Producto producto);
     void deleteById(int id);
 

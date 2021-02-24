@@ -49,6 +49,18 @@ public class ProductosController {
         return "productosLista";
     }
 
+//////////////////
+//reveer esto al final
+@GetMapping("/productoVenta/{id}")
+public String venderProducto(@PathVariable("id")int id, Model model){
+    Producto prod = productoService.findById(id).get();
+    int sell = (int)model.getAttribute("stockVenta");
+    int newStock = prod.getStock() - sell;
+    prod.setStock(newStock);
+    productoService.save(prod);
 
+    model.addAttribute("list", productoService.findByRegular(true));
+    return "productosListaVenta";
+}
 
 }

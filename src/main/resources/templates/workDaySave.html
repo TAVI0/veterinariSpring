@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <link href="../static/css/bootstrapp.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+<h1>ABMC PRODUCTOS</h1>
+<div class="container">
+    <form action="#" th:action="@{/userSave}" class="form-goup" th:object="${user}" method="post">
+
+        <input type="hidden" th:field="*{id}" name="id" id="id">
+        <div class="form-group">
+
+            <label for="userName">Usuario:</label>
+            <input type="text" class="form-control" id="userName" th:field="*{userName}" name="userName">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="password">Password:</label>
+            <input type="text"	class="form-control" id="password" th:field="*{password}" name="password">
+
+        </div>
+
+        <div class="form-group">
+
+            <label >Tipo:</label>
+            <br>
+            <select name="type">
+                <option value="adm" id="adm" >Administrador</option>
+                <option value="vet" id="vet">Veterinario</option>
+                <option value="rec" id="rec">Recepcionista</option>
+            </select>
+            <br>
+        </div>
+
+        <div class="form-group">
+
+            <label for="firstName">Nombre:</label>
+            <input type="text"	class="form-control" id="firstName" th:field="*{firstName}" name="firstName">
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="lastName">Apellido:</label>
+            <input type="text"	class="form-control" id="lastName" th:field="*{lastName}" name="lastName">
+
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+
+    </form>
+
+    <a href="/listaUsers" class="btn btn-primary">Atras</a>
+
+</div>
+
+</body>
+</html>

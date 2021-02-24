@@ -10,6 +10,6 @@ public interface AnimalRepository extends CrudRepository<Animal, Integer> {
     Optional<Animal> findById(int id);
     List<Animal> findAll();
     Animal save(Animal animal);
-    void delete(Animal animal);
+    void deleteById(int id);
 
 }

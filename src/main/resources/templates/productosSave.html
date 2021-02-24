@@ -41,7 +41,8 @@
         <div class="form-group">
 
             <label for="stock">Stock:</label>
-            <input type="text"	class="form-control" id="stock" th:field="*{stock}" name="stock">
+            <input type="number" class="form-control" id="stock" th:field="*{stock}" name="stock" value="1"  min="0"  required="">
+
 
         </div>
 

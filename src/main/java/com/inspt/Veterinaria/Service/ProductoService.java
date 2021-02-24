@@ -21,6 +21,9 @@ public class ProductoService {
     public List<Producto> findAll(){
         return this.productoRepository.findAll();
     }
+    public List<Producto> findByRegular(boolean regular){
+        return this.productoRepository.findByRegular(regular);
+    }
     public Producto save(Producto producto){
         return this.productoRepository.save(producto);
     }

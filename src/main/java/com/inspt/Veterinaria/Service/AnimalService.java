@@ -23,7 +23,7 @@ public class AnimalService {
     public Animal save(Animal animal){
         return this.animalRepository.save(animal);
     }
-    public void delete(Animal animal){
-        this.animalRepository.delete(animal);
+    public void deleteById(int id){
+        this.animalRepository.deleteById(id);
     }
 }
