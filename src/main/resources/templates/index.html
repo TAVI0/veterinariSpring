@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Veterinaria</title>
+</head>
+<body>
+<p th:text="${invalidCredential}"></p>
+<form th:action="@{/login}" th:object="${loginVO}" method="post">
+
+    <label for="user">Usuario</label>
+    <input type="user" id="user" placeholder="user" name="user" />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Contraseña"  name="password" />
+
+    <input type="submit" value="login">
+
+</form>
+
+</body>
+</html>
